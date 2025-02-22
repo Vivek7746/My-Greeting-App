@@ -1,10 +1,10 @@
 package com.springproject.mygreetingapp.service;
 
-import java.util.*;
 import com.springproject.mygreetingapp.model.Greeting;
 import com.springproject.mygreetingapp.repository.GreetingRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -40,5 +40,14 @@ public class GreetingService {
             return greetingRepository.save(greeting);
         }
         return null; // Return null if ID is not found
+    }
+
+    // Delete a greeting message by ID
+    public boolean deleteGreeting(Long id) {
+        if (greetingRepository.existsById(id)) {
+            greetingRepository.deleteById(id);
+            return true;
+        }
+        return false; // Return false if ID does not exist
     }
 }
