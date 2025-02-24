@@ -4,7 +4,7 @@ import com.springproject.mygreetingapp.model.Greeting;
 import com.springproject.mygreetingapp.repository.GreetingRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.List;
 
 @Service
 public class GreetingService {
@@ -23,5 +23,10 @@ public class GreetingService {
     // Find a greeting by ID
     public Greeting findGreetingById(Long id) {
         return greetingRepository.findById(id).orElse(null);
+    }
+
+    // Get all greetings
+    public List<Greeting> getAllGreetings() {
+        return greetingRepository.findAll();
     }
 }
